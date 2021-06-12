@@ -74,6 +74,9 @@ app.use(express.json())
     })
     app.post('/notice-update', async (req, res) => {
         const dataAlter = req.body
+        try{
+            
+        }
     })
 app.listen(8080, () => {
     console.log('Server Running')
