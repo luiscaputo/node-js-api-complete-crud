@@ -19,4 +19,4 @@ const notice = db.define('notice', {
   }
 })
 notice.sync()
-module.exports = notice
+module.exports = notice 
