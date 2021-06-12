@@ -46,13 +46,12 @@ app.use(express.json())
                 }
             }
         })
-        .then(function(){
+        try{
             return res.json({sucesso: true, search})
-
-        })
-       .catch(function(err){
-            return res.status(400).json({sucesso: false, err})
-       })
+        }
+       catch(e){
+            return res.status(400).json({sucesso: false, e})
+       }
     
         
     })
