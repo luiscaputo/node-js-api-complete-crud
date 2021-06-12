@@ -39,6 +39,7 @@ app.use(express.json())
         const data = await notice.findAll()
             return res.json({data})
     })
+    
 app.listen(8080, () => {
     console.log('Server Running')
 })
