@@ -55,6 +55,23 @@ app.use(express.json())
     
         
     })
+    app.post('/notice-delete/:id', async (req, res) => {
+        const id = req.param.id
+            try{
+                const deleting = await notice.destroy({
+                    where: {
+                        id: {
+                            [Op.eq]: id
+                        }
+                    }
+                })
+                return res.json({sucesso: true, deleting})
+            }
+            catch(e)
+            {
+                return res.status(400).json({sucesso: false, e})
+            }
+    })
 app.listen(8080, () => {
     console.log('Server Running')
 })
