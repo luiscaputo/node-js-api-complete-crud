@@ -1,9 +1,7 @@
 const { json } = require('body-parser')
 const express = require('express')
-const { sucrase } = require('sucrase')
-const db = require('../models/database/database')
 const notice = require('../models/notice')
-
+const { Op } = require('sequelize')
 const app = express()
 
 app.use(express.json())
@@ -39,7 +37,25 @@ app.use(express.json())
         const data = await notice.findAll()
             return res.json({data})
     })
-    
+    app.get('/notice-pk/:id', async (req, res) => {
+        const id = req.params.id
+        const search = await notice.findAll({
+            where: {
+                id: {
+                    [Op.eq]: id
+                }
+            }
+        })
+        if(search)
+        {
+            return res.json({sucesso: true, search})
+       }
+        else
+        {
+            return res.json({sucesso: false, message: "Esse usuário não existe"})
+        }
+
+    })
 app.listen(8080, () => {
     console.log('Server Running')
 })
