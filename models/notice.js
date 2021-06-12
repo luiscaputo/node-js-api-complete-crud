@@ -18,5 +18,5 @@ const notice = db.define('notice', {
     allowNull: false
   }
 })
-notice.sync({force: true})
+notice.sync()
 module.exports = notice
