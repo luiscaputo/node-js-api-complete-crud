@@ -10,6 +10,10 @@ app.use(express(sucrase))
     app.get('/', (req, res) => {
         return res.json({sucesso: true, message: 'i am running'})
     })
+
+    app.post('/create-user', async (req, res) => {
+        
+    })
 app.listen(8080, () => {
     console.log('Server Running')
 })
