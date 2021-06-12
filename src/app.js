@@ -1,7 +1,7 @@
 const { json } = require('body-parser')
 const express = require('express')
 const { sucrase } = require('sucrase')
-
+const db = require('../models/database/database')
 const app = express()
 
 app.use(express(json))
