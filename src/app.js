@@ -1,16 +1,13 @@
 // import { json } from 'express'
-import express  from 'express'
-import model from 'src/model'
-import { message } from 'statuses'
-
+const { json } = require('express')
 const express = require('express')
-
-
-
 const app = express()
 
+app.use(express(json))
 app.get('/user', (req, res) => {
-    res.send('Testando')
+    return res.json({sucesso: true, message: "RUNING"})
 })
 
-app.listen(8888)
+app.listen(8080, () =>{
+    console.log('Server Running')
+})

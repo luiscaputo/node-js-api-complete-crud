@@ -3,5 +3,23 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.7",
     "sucrase": "^3.18.1"
-  }
+  },
+  "name": "crud-simple",
+  "version": "1.0.0",
+  "description": "crud simples com nodeJs, Mysql usando o ORM: sequelize",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts":{
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luiscaputo/node-js-api-complete-crud.git"
+  },
+  "author": "luis caputo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luiscaputo/node-js-api-complete-crud/issues"
+  },
+  "homepage": "https://github.com/luiscaputo/node-js-api-complete-crud#readme"
 }
