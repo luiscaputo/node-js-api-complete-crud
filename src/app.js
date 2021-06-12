@@ -1,7 +1,7 @@
 const { json } = require('body-parser')
 const express = require('express')
 const notice = require('../models/notice')
-const { Op } = require('sequelize')
+const { Op, where } = require('sequelize')
 const app = express()
 
 app.use(express.json())
@@ -74,10 +74,16 @@ app.use(express.json())
     })
     app.post('/notice-update', async (req, res) => {
         const dataAlter = req.body
-        try{
-
+        try{    
+            const update = await notice.update({dataAlter},
+            {                
+                where: {
+                    id: req.body.id
+                }
+            })
+            return res.json({sucesso: true, dataAlter})
         }catch(e){
-            
+            return res.json({sucesso: false, e})
         }
     })
 app.listen(8080, () => {
