@@ -34,7 +34,7 @@ app.use(express.json())
             
     });
     app.get('/notice-all', async (req, res) => {
-        const data = await notice.findAll()
+        const data = await notice.findAll({order: [['id', 'DESC']]})
             return res.json({data})
     })
     app.get('/notice-pk/:id', async (req, res) => {
@@ -75,6 +75,8 @@ app.use(express.json())
     app.post('/notice-update', async (req, res) => {
         const dataAlter = req.body
         try{
+
+        }catch(e){
             
         }
     })
