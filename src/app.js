@@ -46,15 +46,15 @@ app.use(express.json())
                 }
             }
         })
-        if(search)
-        {
+        .then(function(){
             return res.json({sucesso: true, search})
-       }
-        else
-        {
-            return res.json({sucesso: false, message: "Esse usuário não existe"})
-        }
 
+        })
+       .catch(function(err){
+            return res.status(400).json({sucesso: false, err})
+       })
+    
+        
     })
 app.listen(8080, () => {
     console.log('Server Running')
