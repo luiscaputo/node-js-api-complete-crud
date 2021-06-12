@@ -1,13 +1,15 @@
-// import { json } from 'express'
-const { json } = require('express')
+const { json } = require('body-parser')
 const express = require('express')
+const { sucrase } = require('sucrase')
+
 const app = express()
 
 app.use(express(json))
-app.get('/user', (req, res) => {
-    return res.json({sucesso: true, message: "RUNING"})
-})
-
-app.listen(8080, () =>{
+app.use(express(sucrase))
+    //routes
+    app.get('/', (req, res) => {
+        return res.json({sucesso: true, message: 'i am running'})
+    })
+app.listen(8080, () => {
     console.log('Server Running')
 })
