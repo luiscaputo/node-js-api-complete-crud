@@ -12,19 +12,32 @@ app.use(express.json())
         return res.json({sucesso: true, message: 'i am running'})
     })
 
-    app.post('/create-notice', async (require, response) => {
+    app.post('/notice-create', async (require, response) => {
         const data = require.body
-            const save = await notice.create(data)
-        .then(function(){
-            return response.json({sucesso: true, data})
-        })
-        .catch(function(err){
-            return response.json({sucesso: false, err})
-        })
+        const title = require.body.title
+            const find = await notice.findAll({
+                where: {
+                    title: [title]
+                }
+            })
+            if(find == ""){
+                const save = await notice.create(data)
+                .then(function(){
+                    return response.json({sucesso: true, data})
+                })
+                .catch(function(err){
+                    return response.json({sucesso: false, err})
+                })
+                }
+                else
+                 {
+                     return res.json({sucesso: false, message: "Essa notícia já existe"})
+                 }
+            
     });
-    app.post('/create', async (req, res) => {
-        const data = req.body
-        return res.json({data})
+    app.get('/notice-all', async (req, res) => {
+        const data = await notice.findAll()
+            return res.json({data})
     })
 app.listen(8080, () => {
     console.log('Server Running')
